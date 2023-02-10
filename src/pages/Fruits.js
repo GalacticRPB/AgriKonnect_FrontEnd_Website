@@ -44,6 +44,39 @@ import { Box, CssBaseline, Button,
       fontSize: 25,
       marginBottom: 5,
     },
+    CategoriesButton: {
+      color: '#FFFF',
+      fontSize: 25,
+      marginBottom: 5,
+      backgroundColor:'#31A05F',
+      borderRadius: 2,
+      "&:hover": {
+        color: '#31A05F',
+        backgroundColor: '#ADE792',
+      },
+    },
+    CategoriesTitle:{
+      fontFamily: 'Poppins',
+      fontWeight: 'bold',
+      color: '#FFFF',
+      fontSize: 25,
+      borderRadius: 2,
+      textAlign: 'center',
+      "&:hover": {
+        color: '#31A05F',
+        backgroundColor: '#ADE792',
+      },
+    },
+    FruitsButton:{
+      fontSize: 25,
+      marginBottom: 5,
+      backgroundColor:'#ADE792',
+      borderRadius: 2,
+      "&:hover": {
+        color: '#FFFF',
+        backgroundColor: '#31A05F',
+      },
+    },
     SearchButton: {
       fontFamily: 'Poppins',
       marginBottom: 5,
@@ -160,16 +193,18 @@ function FruitPages(props)
                       <Item key={idx}>
                         <ListItemButton onClick={() => navigate(`/fruits/${item.name}`,{state:item})} alignItems="flex-start">
                           <Image duration={0} src= {`http://localhost:8000/${item.image}`} width="120px" alt={item.image}/>
+                         
                           <ListItemText primary={item.name} secondary={<Typography
                           sx={{ display: 'inline',
                           fontFamily: 'Poppins',
                           fontWeight: 'bold',
-                          color: '#000000',}}
+                          color: '#388E3C',}}
                           component="span"
                           variant="body2"
                           color="text.primary"
                         >
-                          Price: Php {item.price}.00
+                            Price: Php {item.price}.00
+                          <br></br>Seller: {item.seller_name}
                         </Typography>
                         } 
                           primaryTypographyProps={{ style: classes.producttitle }}
@@ -232,20 +267,51 @@ function FruitPages(props)
             </Button>
         </Box>
         <Typography variant='h4' sx={classes.Header}>
-          Categories
-        </Typography>
-        {/* Containers of Buttons */}
-        <div style={classes.root}>
-          <Grid container spacing={1}>
-            <Grid container item xs={12} spacing={0}>
-              {/*Render the InnerGrid as a child item */}
-              <InnerGrid />
+              Categories
+            </Typography>
+            <br></br>
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <ListItemButton onClick={() => navigate('/vegetables')} sx={classes.CategoriesButton}>
+                <Image duration={0} height={50} width={50} src={vegetables}/>
+                  <ListItemText primary= {<Typography
+                          sx={{ display: 'inline',
+                          fontFamily: 'Poppins',
+                          fontWeight: 'bold',
+                          margin: 3,
+                          fontSize: 20,
+                          color: '#FFFF',
+                          "&:hover": {
+                            color: '#31A05F',
+                            backgroundColor: '#ADE792',
+                          },}}
+                        >
+                          VEGETABLES
+                        </Typography>
+                        }></ListItemText>
+                </ListItemButton>
+              </Grid>
+              <Grid item xs>
+              <ListItemButton onClick={() => navigate('/fruits')} sx={classes.FruitsButton}>
+                  <Image duration={0} height={50} width={50} src={fruits}/>
+                  <ListItemText primary={<Typography
+                          sx={{ display: 'inline',
+                          fontFamily: 'Poppins',
+                          fontWeight: 'bold',
+                          margin: 3,
+                          fontSize: 20,
+                          color: '#FFFF',
+                          "&:hover": {
+                            color: '#FFFF',
+                            backgroundColor: '#31A05F',
+                          },}}
+                        >
+                          FRUITS
+                        </Typography>
+                        }></ListItemText>
+                </ListItemButton>
+              </Grid>
             </Grid>
-          </Grid>
-        </div>
-        <Typography variant='h4' sx={classes.Header}>
-          Fruits
-        </Typography>
         <List>
         {showProductList}
       </List>

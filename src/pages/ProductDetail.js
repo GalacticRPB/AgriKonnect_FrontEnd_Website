@@ -12,7 +12,10 @@ import CustomerResponsiveAppBar from '../components/CustomerResponsiveAppBar';
 import {useNavigate} from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Image } from 'mui-image';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import CardMedia from '@mui/material/CardMedia';
+
 
 
 
@@ -21,15 +24,34 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
 
 const classes = {
   SubHeader: {
     fontFamily: 'Poppins',
-    color: '#000000',
+    color: '#5F645F',
+    margin: 2,
     fontWeight: 'bold',
+  },
+  Sub2Header: {
+    fontFamily: 'Poppins',
+    color: '#5F645F',
+    fontWeight: 'bold',
+    
+  },
+  Header: {
+    fontFamily: 'Poppins',
+    color: '#5F645F',
+    fontWeight: 'bold',
+    margin: 2,
+  },
+  price:{
+    fontFamily: 'Poppins',
+    fontWeight: 'bold',
+    fontSize: 25,
+    margin: 2,
+    color: '#388E3C',
   },
   arrowback:{
       color: '#111111',
@@ -39,8 +61,6 @@ const classes = {
   },
   illustration:{
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
   },
   name:{
     fontFamily: 'Poppins',
@@ -61,12 +81,13 @@ const classes = {
   },
   productprice:{
     fontFamily: 'Poppins',
-    fontWeight: 'bold',
-    color: '#000000',
+    margin: 2,
+    color: '#5F645F',
   },
   SubmitButton: {
       fontFamily: 'Poppins',
       margin: 1,
+      padding: 1,
       color: "#FFFF",
       backgroundColor: '#388E3C'
   },
@@ -87,9 +108,8 @@ const classes = {
           backgroundColor: '#4DA351',
          },
   },
-  tepper: {
-    marginTop: 1,
-    marginBottom: 1,
+  stepper: {
+    margin:2
   },
   StepperPlusButton: {
       backgroundColor: '#388E3C',
@@ -256,80 +276,72 @@ function ProductDetails()
                         <ArrowBackIcon sx = {classes.arrowback}/>
                     </Button>
                 </Stack>
-                <Stack direction='column' spacing={2}>
+                <Grid container spacing={2} columns={16}>
+                  <Grid item xs={8}>
+                    <Item>
+                    <Box>
+                        <CardMedia
+                          component='img'
+                          height="352"
+                          sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
+                          image={`http://localhost:8000/${image}`}
+                        />
+                    </Box>   
+                    </Item>
+                  </Grid>
+                  <Grid item xs={8}>
+                    <Item>
                     <Box sx = {classes.illustration}>
-                        <Image src={`http://localhost:8000/${image}`} duration = {0} height= {"50hv"} width= {"50hv"}></Image>
-                    </Box>    
-                    <Box sx = {classes.illustration}>
-                        <Typography variant='h5' sx={classes. SubHeader}>
+                        <Typography variant='h4' sx={classes.Header}>
                         {name}
                         </Typography>
                     </Box>
-                    <Typography variant='h5' sx={classes. SubHeader}>
-                        Product Category:
-                    </Typography>
-                    <Typography variant='h6' sx={classes.productprice}>
-                        {category}
+                    <Typography sx={classes.productprice}>
+                        {category} | {description} 
                     </Typography>
                     <Divider/>
-                    <Typography variant='h5' sx={classes.SubHeader}>
-                        Growing Method:
-                    </Typography>
-                    <Typography variant='h6' sx={classes.productprice}>
-                      {description}
-                    </Typography>
-                    <Divider/>
-                        <Typography variant='h5' sx={classes.SubHeader}>
-                            Price
-                        </Typography>
-                        <Typography variant='h6' sx={classes.productprice}>
+                        <Typography sx={classes.price}>
                             Php {price}.00
                         </Typography>
-                        <Typography variant='h5' sx={classes.SubHeader}>
-                            Available Stock
+                        <Typography sx={classes.SubHeader}>
+                            Available Stocks
                         </Typography>
-                        <Typography variant='h6' sx={classes.productprice}>
+                        <Typography sx={classes.productprice}>
                             {qty}
                         </Typography>
-                        <Divider/>
-                        <Typography variant='h5' sx={classes.SubHeader}>
-                            Order Quantity
-                        </Typography>
-                        <Stack direction='row'>
-                              <ButtonGroup sx= {classes.stepper} size="small" aria-label="small button group">
-                              <Button sx={classes.StepperMinusButton} onClick={handleDecrement}>-</Button>
+                        <Stack sx = {{margin: 2}} spacing = {2} direction='row'>
+                            <Typography sx={classes.Sub2Header}>
+                              Order Quantity
+                              <br></br>(kg)
+                            </Typography>
+                              <ButtonGroup sx= {classes.stepper} aria-label="small button group">
+                                  <Button sx={classes.StepperPlusButton} onClick={handleIncrement}><AddIcon sx={{fontSize:'medium'}}></AddIcon></Button>
                                   <Button sx = {classes.number}> {value}</Button>
-                                  <Button sx={classes.StepperPlusButton}  onClick={handleIncrement}>+</Button>
+                                  <Button sx={classes.StepperMinusButton}  onClick={handleDecrement}><RemoveIcon sx={{fontSize: 'medium'}}></RemoveIcon></Button>
                               </ButtonGroup>
-                              <Typography sx={classes.stepperlabel}> 
-                                  kg
-                              </Typography>
+                              <Box sx = {classes.illustration}>
+                                  <Button sx={classes.SubmitButton} aria-label="add" onClick={submitProduct}>
+                                      ADD TO BASKET
+                                  </Button>
+                            </Box>
                         </Stack>
-                    <Divider/>
+                    </Item>
+                  </Grid>
+                  </Grid>
+               
                     <Stack direction='row' spacing={5}>
                         <Typography variant='h5' sx={classes.SubHeader}>
-                            Seller Name:
-                        </Typography>
-                        <Typography variant='h6' sx={classes.productprice}>
-                            {seller}
+                            Seller Name: {seller}
                         </Typography>
                     </Stack>
                     <Stack direction='row' spacing={1}>
-                        <Typography variant='h5' sx={classes.productprice}>
+                        <Typography variant='h5' sx={classes.SubHeader}>
                             Reviews
                         </Typography>
                     </Stack>
                     <List>
                       {reviewList}
                     </List>
-                    <Box sx = {classes.illustration}>
-                        <Stack direction='row'>
-                            <Button sx={classes.SubmitButton} aria-label="add" onClick={submitProduct}>
-                                ADD TO BASKET
-                            </Button>
-                        </Stack>
-                    </Box>
-                </Stack>
             </Box>
         </Box>
       </>

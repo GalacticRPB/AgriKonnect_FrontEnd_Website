@@ -69,6 +69,9 @@ const classes = {
         color: '#FFFF',
       },
     },
+    LoginTitleButton:{
+      marginLeft: 4,
+    }
 }
 
   //Storing of data for buttons
@@ -170,10 +173,18 @@ function CustomerAccount()
           </List>
           <Box sx={{ width: '100%', marginBottom: 1 }}>
               <Stack direction={{ xs: "column-reverse"}}  spacing={10}>
-                  <Box sx={classes.ButtonContainer}>
+                  <Box sx={{boxShadow: 2, 
+                  fontFamily: 'Poppins',
+                  backgroundColor:'#FFFF',
+                  color: '#3E3D3D',
+                  padding: 1,
+                  borderRadius: 1,
+                  "&:hover": {
+                    color: '#FFFF',
+                    backgroundColor: '#388E3C',}}}>
                       <ListItemButton onClick={logoutCustomer}>
                           <LogoutIcon sx={classes.Icon}/>
-                          <ListItemText primaryTypographyProps={classes.TitleButton} primary={"Logout"}/>
+                          <ListItemText primaryTypographyProps={classes.LoginTitleButton} primary={" Logout"}/>
                           <KeyboardArrowRightIcon sx={classes.ArrowRight}/>
                       </ListItemButton>
                   </Box>

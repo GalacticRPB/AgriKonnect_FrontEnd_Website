@@ -18,7 +18,7 @@ import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import PersonIcon from '@mui/icons-material/Person';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import { Image } from 'mui-image';
-import logo from '../assets/logo.png';
+import logo from '../assets/agrikonnect-logoW.png'
 import {useNavigate} from 'react-router-dom';
 
 const drawerWidth = 240;

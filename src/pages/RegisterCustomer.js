@@ -89,6 +89,7 @@ const RegisterCustomer = () => {
     email: '',
     mobilephone: '',
     password: '',
+    privacy: false,
   });
     
   const history = useNavigate();
@@ -97,7 +98,7 @@ const RegisterCustomer = () => {
 
   const handleInput = (e) => {
     e.persist();
-    setUser({...userInput, [e.target.name]:e.target.value});
+    setUser({...userInput, [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value});
   }
 
   const customerSignup = (e) => {
@@ -109,6 +110,7 @@ const RegisterCustomer = () => {
     formData.append('lastname', userInput.lastname);
     formData.append('username', userInput.username);
     formData.append('email', userInput.email);
+    formData.append('privacy', userInput.privacy);
     formData.append('password', userInput.password);
     formData.append('mobilephone', userInput.mobilephone);
 
@@ -116,11 +118,12 @@ const RegisterCustomer = () => {
     axios.post(`http://localhost:8000/api/registerCustomer`,formData,
       {headers: { "Content-Type": "multipart/form-data" },})
       .then(res=>{
-        if(res.data.status === 200)
+        if(res.status === 200)
         {
+            localStorage.setItem("user-info", JSON.stringify(res.data))
             swal('Success', res.data.message,'success');
             setError([]);
-            history('/login-customer');
+            history('/otp');
         }
         else if(res.data.status === 422)
         { 

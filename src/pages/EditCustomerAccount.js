@@ -14,6 +14,7 @@ const classes = {
       fontWeight: 'bold',
       color: '#5F5B5B',
       marginTop: 5,
+      marginBottom: 5,
       marginLeft: 2,
     },
     SubHeader: {
@@ -64,8 +65,10 @@ const classes = {
         width: 50,
         height: 50,
         marginTop: 5,
+        marginBottom: 5,
     },
 }
+
 
 const EditCustomerAccount = () => {
 
@@ -136,7 +139,7 @@ const EditCustomerAccount = () => {
                         <ArrowBackIcon sx = {classes.arrowback}/>
                     </Button>
                     <Typography variant='h3' sx={classes.Header}>
-                    Edit Profile
+                    Edit User Profile
                     </Typography>
                 </Stack>
                 <Stack direction='column'>
@@ -176,8 +179,22 @@ const EditCustomerAccount = () => {
                         <input type="text" name="address" onChange={(e) => handleInput(e)} defaultValue={customerInput?.address} className="form-control" />
                         <span className="text-danger">{errorInput.address}</span>
                     </div>
-                    <div className="form-group mb-3">
-                        <button type="submit" id="updatebtn" className="btn btn-success">SAVE CHANGES</button>
+                    <div 
+                         style={{
+                            textAlign: 'center',
+                            alignItems:'center',
+                            alignSelf: 'center',
+                            justifyContent: 'center',}}
+                        className="form-group mb-3">
+                        <button type="submit" id="updatebtn"
+                        style={{
+                            borderRadius: 12,
+                            fontFamily: 'Poppins',
+                            fontWeight: 'bold',
+                            margin: 1,
+                            color: "#FFFF",
+                            backgroundColor: '#388E3C'}}
+                        className="btn">SAVE CHANGES</button>
                     </div>
                 </form>
                 </Stack>

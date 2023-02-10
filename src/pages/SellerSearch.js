@@ -14,6 +14,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ResponsiveDrawer from '../components/Drawer';
 import {useNavigate} from 'react-router-dom';
 import { Image } from 'mui-image';
+import CardMedia from '@mui/material/CardMedia';
 
 //ScreenSize
 const drawerWidth = 240;
@@ -92,7 +93,13 @@ function SellerSearch() {
                 <Grid item xs={4} key={ index}>
                     <Paper style={classes.paper}>
                         <ListItem sx={classes.positionImage}>
-                            <Image sx={classes.productImg} duration={0} src={`http://localhost:8000/${item.image}`}/>
+                        <CardMedia
+                          component='img'
+                          height='260'
+                          width='260'
+                          sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
+                          image={`http://localhost:8000/${item.image}`}
+                        />
                         </ListItem>
                         <ListItem>
                         <ListItemText primaryTypographyProps={classes.ProductTitle} 

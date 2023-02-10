@@ -197,6 +197,7 @@ function ViewProduct(props) {
                           component='img'
                           height='260'
                           width='260'
+                          sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
                           image={`http://localhost:8000/${item.image}`}
                         />
                         </ListItem>

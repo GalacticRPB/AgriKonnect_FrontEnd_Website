@@ -99,7 +99,7 @@ const Register = () => {
       mobilephone: '',
       password: '',
       brgy: '',
-      privacy: '',
+      privacy: false,
       verified: 'false',
 
     });
@@ -108,7 +108,7 @@ const Register = () => {
 
     const handleInput = (e) => {
       e.persist();
-      setUser({...userInput, [e.target.name]:e.target.value});
+      setUser({...userInput, [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value});
     }
 
     const handleImage = (e) => {
@@ -134,8 +134,10 @@ const Register = () => {
       axios.post(`http://localhost:8000/api/register`,formData,
       {headers: { "Content-Type": "multipart/form-data" },})
       .then(res=>{
+        
         if(res.data.status === 200)
         {
+            
             swal('Success', res.data.message,'success');
             setError([]);
             history('/seller/login');
@@ -333,7 +335,7 @@ const Register = () => {
                 <br></br>
                 <br></br>
                 <div className='form-group'>
-                  <label><input type="checkbox" name="privacy" onChange={handleInput} value={userInput.privacy}></input> I hereby authorize AgriKOnnect to collect and process the data indicated herein for the purpose of the usage of the application. I understand that my personal information is protected by RA 10173, Data Privacy Act of 2012.</label>
+                  <label><input type="checkbox" name="privacy" onChange={handleInput} value={userInput.privacy} required></input> I hereby authorize AgriKOnnect to collect and process the data indicated herein for the purpose of the usage of the application. I understand that my personal information is protected by RA 10173, Data Privacy Act of 2012.</label>
                   <small className='text-danger'>{errorList.privacy}</small>
                 </div>
                 <Button

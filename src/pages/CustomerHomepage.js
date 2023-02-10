@@ -32,13 +32,41 @@ import axios from 'axios';
       fontFamily: 'Poppins',
       fontWeight: 'bold',
       color: '#5F5B5B',
-      marginTop: 5,
+    },
+    TopHeader:{
+      fontFamily: 'Poppins',
+      fontWeight: 'bold',
+      marginTop: 2,
+      color: '#5F5B5B',
     },
     SubHeader: {
       fontFamily: 'Poppins',
       color: '#5F5B5B',
       fontSize: 25,
       marginBottom: 5,
+    },
+    CategoriesButton: {
+      color: '#FFFF',
+      fontSize: 25,
+      marginBottom: 5,
+      backgroundColor:'#31A05F',
+      borderRadius: 2,
+      "&:hover": {
+        color: '#31A05F',
+        backgroundColor: '#ADE792',
+      },
+    },
+    CategoriesTitle:{
+      fontFamily: 'Poppins',
+      fontWeight: 'bold',
+      color: '#FFFF',
+      fontSize: 25,
+      borderRadius: 2,
+      textAlign: 'center',
+      "&:hover": {
+        color: '#31A05F',
+        backgroundColor: '#ADE792',
+      },
     },
     SearchButton: {
       fontFamily: 'Poppins',
@@ -70,52 +98,6 @@ import axios from 'axios';
       fontWeight: 'bold',
       color: '#000000',
     },
-  }
-
-  const CategoriesButton = [
-    {
-      name: "Vegetables",
-      path: '/vegetables',
-      image: <Image duration = {0} src={vegetables} sx={classes.positionImage} height={150} width={150} />,
-    },
-    {
-      name: "Fruits",
-      path: '/fruits',
-      image: <Image duration = {0} src={fruits} sx={classes.positionImage} height={150} width={150} />,
-    },
-  ];
-
-//List of Categories Containers
-function InnerGrid() {
-    const navigate = useNavigate();
-    return (
-      <>
-      {CategoriesButton.map((item, index) => {
-        const { name, image,path} = item;
-          return (
-            <Box>
-                <Grid item xs={4} rowSpacing={1} key={index}>
-                   <Button onClick={() => navigate(path)}>
-                      <Box component="span" sx={{ p: 4, 
-                        backgroundColor: '#31A05F',
-                        borderRadius: 4,
-                        width: 350,
-                        height: 250, 
-                        m: 3,
-                        "&:hover": {
-                          color: '#FFFF',
-                          backgroundColor: '#388E3C',
-                        }, }}>
-                        {image && <ListItemIcon>{image}</ListItemIcon>}
-                        {name && <Typography sx={classes.ButtonTitle}>{name}</Typography>}
-                      </Box>
-                    </Button>
-                </Grid>
-              </Box>
-          );
-      })}
-      </>
-    );
   }
 
 const CustomerHomepage = (props) =>
@@ -182,7 +164,7 @@ const CustomerHomepage = (props) =>
               sx={{ flexGrow: 1, p: 3 }}
             >
             <Toolbar id="back-to-top-anchor"/>
-            <Typography variant='h3' sx={classes.Header}>
+            <Typography variant='h3' sx={classes.TopHeader}>
               Hi, { customer.firstname} !
             </Typography>
             <Typography sx={classes.SubHeader}>
@@ -203,15 +185,49 @@ const CustomerHomepage = (props) =>
             <Typography variant='h4' sx={classes.Header}>
               Categories
             </Typography>
-            {/* Containers of Buttons */}
-            <div style={classes.root}>
-              <Grid container spacing={1}>
-                <Grid container item xs={12} spacing={0}>
-                  {/*Render the InnerGrid as a child item */}
-                  <InnerGrid />
-                </Grid>
+            <br></br>
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <ListItemButton onClick={() => navigate('/vegetables')} sx={classes.CategoriesButton}>
+                <Image duration={0} height={50} width={50} src={vegetables}/>
+                  <ListItemText primary= {<Typography
+                          sx={{ display: 'inline',
+                          fontFamily: 'Poppins',
+                          fontWeight: 'bold',
+                          margin: 3,
+                          fontSize: 20,
+                          color: '#FFFF',
+                          "&:hover": {
+                            color: '#31A05F',
+                            backgroundColor: '#ADE792',
+                          },}}
+                        >
+                          VEGETABLES
+                        </Typography>
+                        }></ListItemText>
+                </ListItemButton>
               </Grid>
-            </div>
+              <Grid item xs>
+              <ListItemButton onClick={() => navigate('/fruits')} sx={classes.CategoriesButton}>
+                  <Image duration={0} height={50} width={50} src={fruits}/>
+                  <ListItemText primary={<Typography
+                          sx={{ display: 'inline',
+                          fontFamily: 'Poppins',
+                          fontWeight: 'bold',
+                          margin: 3,
+                          fontSize: 20,
+                          color: '#FFFF',
+                          "&:hover": {
+                            color: '#31A05F',
+                            backgroundColor: '#ADE792',
+                          },}}
+                        >
+                          FRUITS
+                        </Typography>
+                        }></ListItemText>
+                </ListItemButton>
+              </Grid>
+            </Grid>
             <Typography variant='h4' sx={classes.Header}>
               Recommendations
             </Typography>

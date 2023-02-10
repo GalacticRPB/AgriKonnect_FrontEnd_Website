@@ -3,21 +3,37 @@ import React, {useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { Box, CssBaseline, Button, 
-  GlobalStyles,Toolbar, Typography,
+  GlobalStyles,Toolbar, Typography, Divider,
    Stack,} from "@mui/material";
 import { Image } from 'mui-image';
 import CustomerResponsiveAppBar from '../components/CustomerResponsiveAppBar';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Unstable_Grid2';
+import CardActions from "@mui/material/CardActions";
+import CardMedia from '@mui/material/CardMedia';
 
 const classes = {
   Header: {
       fontFamily: 'Poppins',
       fontWeight: 'bold',
       color: '#5F5B5B',
-      marginTop: 5,
+      marginTop: 6,
       marginLeft: 2,
     },
+  Title: {
+      fontFamily: 'Poppins',
+      fontWeight: 'bold',
+      color: '#5F5B5B',
+      marginTop: 6,
+      marginLeft: 2,
+  },
+  Title2: {
+    fontFamily: 'Poppins',
+    color: '#5F5B5B',
+    margin: 2,
+},
   SubHeader: {
     fontFamily: 'Poppins',
     color: '#000000',
@@ -50,7 +66,8 @@ const classes = {
   },
   SubmitButton: {
       fontFamily: 'Poppins',
-      margin: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
       color: "#FFFF",
       backgroundColor: '#388E3C'
   },
@@ -79,6 +96,12 @@ const classes = {
 
 
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  color: theme.palette.text.secondary,
+}));
 
 
 
@@ -177,9 +200,16 @@ function Checkout() {
   checkOutDetails = state.selectedItems.map( (item, idx) => {
     return(
       <> 
-      <Box sx = {classes.illustration}>
-      <Image width="120px" alt={item.image} duration={0} src={`http://localhost:8000/${item.image}`}/>
-      </Box>
+      <Box>
+        <CardMedia
+            component='img'
+            height="205"
+            alt={item.image}
+            sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
+            image={`http://localhost:8000/${item.image}`}
+        />
+      </Box>   
+      
       <Box sx = {classes.illustration}>
         <Typography variant='h5' sx={classes. SubHeader}>
         {item.name}
@@ -218,47 +248,102 @@ function Checkout() {
                     <Button onClick={() => history('/basket')}>
                         <ArrowBackIcon sx = {classes.arrowback}/>
                     </Button>
-                    <Typography variant='h3' sx={classes.Header}>
+                    <Typography variant='h4' sx={classes.Header}>
                       Checkout Details
-                      </Typography>
+                    </Typography>
                 </Stack>
-                <Stack direction='column' spacing={2}> 
-                {checkOutDetails}
-                </Stack>
-                <div className="form-group mb-3">
-                  <input
-                    type="text"
-                    name="shippingaddress"
-                    onChange={handleInput}
-                    value={checkoutInput.shippingaddress}
-                    className="form-control"
-                    placeholder="Enter Shipping Address"
-                  />
-                  <small className="text-danger">
-                  {error.shippingaddress}
-                  </small>
-                  </div>
-                 <div className="form-group mb-3">
-                 <p>Mode of Payment</p>
-                  {state.modeofpayment}
-                  </div>
-                  <div className="form-group mb-3">
-                  <div className="form-group mb-3">
-                  <p>Mobile Phone</p>
-                  {customer.mobilephone}
-                  </div>
-                  <small className="text-danger">
-                    {error.mobilephone}
-                  </small>
-                  </div>
-                  <p>Shipping Fee: Php {shippingfee}.00</p>
-                  <p>Subtotal: Php {total_price}.00</p>
-                  <p>Total (including shipping fee): Php {grandtotal}.00</p>
-                  <hr />
-                  <Button sx={classes.SubmitButton} onClick={submitOrder} aria-label="add">
+                <Box sx={{ width: 1 }}>
+      <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+        <Box gridColumn="span 4">
+          
+        </Box>
+        <Box gridColumn="span 12">
+          <Item>
+          <Typography variant="h4" sx={classes.Title2}>Personal Information</Typography>
+                      <Divider></Divider>
+                      <div className="form-group mb-3">
+                      <input
+                        type="text"
+                        name="shippingaddress"
+                        style={{
+                          margin: 12,
+                          width: '95%',
+                        }}
+                        onChange={handleInput}
+                        value={checkoutInput.shippingaddress}
+                        className="form-control"
+                        placeholder="Enter Shipping Address"
+                      />
+                      <small 
+                      style={{
+                        margin: 12,
+                      }}
+                      className="text-danger">
+                      {error.shippingaddress}
+                      </small>
+                      </div>
+                      <div className="form-group mb-3">
+                      <div className="form-group mb-3">
+                      <p style={{fontWeight: 'bold',
+                      fontFamily: 'Poppins',
+                    fontSize: 15,
+                    margin: 15,}}>Mobile Phone</p>
+                      <p
+                      style={{
+                        margin: 15,
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                      }}>{customer.mobilephone}</p>
+                      </div>
+                      <small className="text-danger">
+                        {error.mobilephone}
+                      </small>
+                      </div>
+          </Item>
+        </Box>
+        <Box gridColumn="span 4">
+          <Item>
+          {checkOutDetails}
+               </Item>
+        </Box>
+        <Box gridColumn="span 8">
+          <Item>
+            <Typography variant='h4' sx={classes.Title2}>
+                      Order Details
+                    </Typography>
+                    <Divider/>
+                    <br></br>
+                      <p
+                      style={{
+                        margin: 15,
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                      }}>Shipping Fee: Php {shippingfee}.00</p>
+                  <p style={{
+                        margin: 15,
+                        fontSize: 15,
+                        fontFamily: 'Poppins',
+                      }}>Subtotal: Php {total_price}.00</p>
+                  <p
+                  style={{
+                    margin: 15,
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                    fontWeight: 'bold'
+                  }}
+                  >Total (including shipping fee): Php {grandtotal}.00</p>
+                  <CardActions sx={{ justifyContent: "center" }}>
+                    <Button sx={classes.SubmitButton} onClick={submitOrder} aria-label="add">
                     PLACE ORDER
-                  </Button>
-        
+                    </Button> 
+                  </CardActions>
+                 
+                   
+          </Item>
+        </Box>
+      </Box>
+    </Box>
+               
                 </Box>
                 </Box>
    

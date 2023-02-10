@@ -133,8 +133,6 @@ const EditAccount = () => {
             }
         });
     }
-
-    console.log(userInfo)
     return (
         <Box sx={{ display: 'flex' }}>
         <ResponsiveDrawer/>

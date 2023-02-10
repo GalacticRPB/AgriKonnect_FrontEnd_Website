@@ -233,9 +233,9 @@ function Basket() {
               <Box>
                 <Stack direction='row'>
                     <ButtonGroup sx= {classes.stepper} size="small" aria-label="small button group">
-                        <Button sx={classes.StepperMinusButton} onClick={() => handleDecrement(item.id)}>-</Button>
-                        <Button sx = {classes.number}> {item.fruits_qty}</Button>
                         <Button sx={classes.StepperPlusButton}  onClick={() => handleIncrement(item.id)}>+</Button>
+                        <Button sx = {classes.number}> {item.fruits_qty}</Button>
+                        <Button sx={classes.StepperMinusButton} onClick={() => handleDecrement(item.id)}>-</Button>
                     </ButtonGroup>
                     <Typography sx={classes.stepperlabel}> 
                       kg
@@ -250,7 +250,7 @@ function Basket() {
       return (
         <div>
           <div className="card card-body py05 text-center shadow-sm">
-            <h4>Your Shopping Cart is Empty</h4>
+            <h4>Your basket is empty.</h4>
           </div>
         </div>
       );

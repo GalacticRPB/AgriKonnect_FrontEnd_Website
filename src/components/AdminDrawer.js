@@ -12,7 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { Image } from 'mui-image';
-import logo from '../assets/logo.png';
+import logo from '../assets/agrikonnect-logoW.png'
 import {useNavigate} from 'react-router-dom';
 
 const drawerWidth = 240;

@@ -18,6 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from 'react-router-dom';
 import { Image } from 'mui-image';
 import CustomerResponsiveAppBar from "../components/CustomerResponsiveAppBar";
+import CardMedia from '@mui/material/CardMedia';
 
 //ScreenSize
 const drawerWidth = 240;
@@ -30,6 +31,11 @@ const classes = {
       padding: 20,
       textAlign: "center",
       color: "blue"
+    },
+    producttitle:{
+      fontFamily: 'Poppins',
+      fontWeight: 'bold',
+      color: '#000000',
     },
     Header: {
       fontFamily: 'Poppins',
@@ -102,22 +108,25 @@ function SearchProduct() {
                 <Stack direction={{ xs: "column-reverse"}}  spacing={10}>
                   <Item key={index}>
                     <ListItemButton onClick={()=> navigate ((`/vegetables/${item.name}`),{state:item})} alignItems="flex-start">
-                      <Image duration = {0} src={`http://localhost:8000/${item.image}`} height={50} width={50} />
+                      <Image duration = {0} src={`http://localhost:8000/${item.image}`} height={100} width={100} />
                       <ListItemText primary={item.name} secondary={<Typography
                       sx={{ display: 'inline',
                       fontFamily: 'Poppins',
                       fontWeight: 'bold',
-                      color: '#000000',}}
+                      color: '#388E3C',
+                      }}
                       component="span"
                       variant="body2"
                       color="text.primary"
                     >
-                     Price: Php {item.price} .00
+                     Price: Php {item.price}.00
+                     <br></br>
                      Seller: {item.seller_name}
                     </Typography>
                     } 
                       primaryTypographyProps={{ style: classes.producttitle }}
                       secondaryTypographyProps={{style: classes.productprice }}/>
+
                     </ListItemButton>
                   </Item>
                 </Stack>

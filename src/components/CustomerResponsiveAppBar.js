@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Image } from 'mui-image';
 import {useNavigate} from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/agrikonnect-logo-nobg.png';
 
 const drawerWidth = 240;
 

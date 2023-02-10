@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Image } from 'mui-image';
-import logo from '../assets/logo.png'
+import logo from '../assets/agrikonnect-logo-white.png'
 
 
 function ResponsiveAppBar() {
@@ -13,7 +13,7 @@ function ResponsiveAppBar() {
     <AppBar component="nav" sx={{backgroundColor: '#388E3C'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-            <Image duration={0} src={logo} width={100} height={100}/>
+            <Image duration={0} src={logo} width={80} height={80}/>
           <Typography
             noWrap
             component="a"

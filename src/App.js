@@ -24,6 +24,7 @@ import SelectionPage from './pages/SelectionPage';
 //Customer Account
 import LoginCustomer from './pages/LoginCustomer';
 import RegisterCustomer from './pages/RegisterCustomer';
+import OTPScreen from './pages/OtpScreen';
 import CustomerHomepage from './pages/CustomerHomepage';
 import Basket from './pages/Basket';
 import CustomerAccount from './pages/CustomerAccount';
@@ -76,6 +77,7 @@ function App()
 
             <Route path="/login-customer" element={<LoginCustomer/>} />
             <Route path="/register-customer" element={<RegisterCustomer/>} />
+            <Route path="/otp" element={<OTPScreen/>} />
             <Route path="/customer-homepage" element={<CustomerHomepage/>} />
             <Route path="/vegetables" element={<VegetablePage/>}/>
             <Route path="/fruits" element={<FruitPages/>}/>
