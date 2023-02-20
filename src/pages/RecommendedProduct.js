@@ -147,7 +147,7 @@ function RecommendedDetails()
 
   useEffect(() => {
 
-      axios.get(`http://localhost:8000/api/viewfruit/${product_id}`).then((res) => {
+      axios.get(`http://agrikonnect.herokuapp.com/${product_id}`).then((res) => {
         if (res.status === 200) {
           
           setReview(res.data.reviews);
@@ -190,7 +190,7 @@ function RecommendedDetails()
         image: state.image,
       }
 
-     axios.post(`http://localhost:8000/api/addtoCart`, data).then(res=>{
+     axios.post(`http://agrikonnect.herokuapp.com`, data).then(res=>{
         if(res.data.status === 201)
         {
           swal("Success",res.data.message,"success");
@@ -258,7 +258,7 @@ function RecommendedDetails()
                 </Stack>
                 <Stack direction='column' spacing={2}>
                     <Box sx = {classes.illustration}>
-                        <Image src={`http://localhost:8000/${image}`} duration = {0} height= {"50hv"} width= {"50hv"}></Image>
+                        <Image src={`http://agrikonnect.herokuapp.com/${image}`} duration = {0} height= {"50hv"} width= {"50hv"}></Image>
                     </Box>    
                     <Box sx = {classes.illustration}>
                         <Typography variant='h5' sx={classes. SubHeader}>

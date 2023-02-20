@@ -84,7 +84,7 @@ function SellerSearch() {
     
     async function search(key) {
         console.warn(key)
-        let result = await fetch(`http://localhost:8000/api/search-product/${id}/${key}`);
+        let result = await fetch(`http://agrikonnect.herokuapp.com/${id}/${key}`);
         console.log(result);
         result = await result.json();
  

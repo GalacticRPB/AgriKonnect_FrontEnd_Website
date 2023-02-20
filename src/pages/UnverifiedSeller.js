@@ -90,7 +90,7 @@ function UnverifiedTable(props)
     }
     useEffect(() => {
 
-        axios.get(`http://localhost:8000/api/users`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com`).then(res=>{
             if(res.status === 200)
             {
                 setUser(res.data.users)
@@ -107,7 +107,7 @@ function UnverifiedTable(props)
             verified: 'true',
         }
 
-        axios.post( `http://localhost:8000/api/update-verification/${users[0].id}`, sellerData).then(res=> {
+        axios.post( `http://agrikonnect.herokuapp.com/${users[0].id}`, sellerData).then(res=> {
         if(res.data.status === 200)
             {
                 swal("Success",res.data.message,"success");
@@ -139,7 +139,7 @@ function UnverifiedTable(props)
                     <StyledTableCell align="right">{item.middlename}</StyledTableCell>
                     <StyledTableCell align="right">{item.lastname}</StyledTableCell>
                     <StyledTableCell align="right">{item.username}</StyledTableCell>
-                    <StyledTableCell align="right"><Image duration={0} src={`http://localhost:8000/${item.image}`} width={80} alt=""/></StyledTableCell>
+                    <StyledTableCell align="right"><Image duration={0} src={`http://agrikonnect.herokuapp.com/${item.image}`} width={80} alt=""/></StyledTableCell>
                     <StyledTableCell align="right">{item.mobilephone}</StyledTableCell>
                     <StyledTableCell align="right"><Button variant="contained" onClick={updateSeller}  sx={classes.ViewButton}>
                     Approve</Button></StyledTableCell>

@@ -154,7 +154,7 @@ function TransactionPage(props)
 
     useEffect(() => {
         
-        axios.get(`http://localhost:8000/api/showOrder/${user_id}`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com/${user_id}`).then((res) => {
           if (res.status === 200) {
             setOrders(res.data.orders);
             setLoading(false);
@@ -184,7 +184,7 @@ function TransactionPage(props)
           
       }
 
-      axios.post(`http://localhost:8000/api/out-for-delivery`, submitOrder).then(res=> {
+      axios.post(`http://agrikonnect.herokuapp.com`, submitOrder).then(res=> {
           if(res.data.status === 200)
           {
               swal("Order is out for Delivery", res.data.message, "Success")

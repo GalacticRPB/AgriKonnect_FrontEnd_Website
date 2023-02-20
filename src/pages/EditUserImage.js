@@ -22,7 +22,7 @@ const EditUserImage = () => {
         const formData = new FormData();
         formData.append('userImage', imageProfile.userImage);
         
-        axios.put(`http://localhost:8000/api/updateImage/${user_id}`, formData).then(res=>{
+        axios.put(`http://agrikonnect.herokuapp.com/${user_id}`, formData).then(res=>{
             if(res.data.status === 200)
             {
                 swal('Success', res.data.message,'success');

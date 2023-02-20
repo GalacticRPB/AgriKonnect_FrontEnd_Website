@@ -108,7 +108,7 @@ function ToReceivedPage(props)
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8000/api/out-for-delivery/${id}`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com/${id}`).then((res) => {
           if (res.status === 200) {
             setToDeliver(res.data.deliveries);
             setLoading(false);
@@ -140,7 +140,7 @@ function ToReceivedPage(props)
         }
         console.log(delivered)
 
-        axios.post(`http://localhost:8000/api/order-delivered`, delivered).then(res=> {
+        axios.post(`http://agrikonnect.herokuapp.com`, delivered).then(res=> {
             if(res.data.status === 200)
             {
                 swal("Order Delivered", res.data.message, "Success")

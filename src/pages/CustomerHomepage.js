@@ -110,7 +110,7 @@ const CustomerHomepage = (props) =>
 
     useEffect(() => {
 
-      axios.get(`http://localhost:8000/api/product-recommended`).then((res) => {
+      axios.get(`http://agrikonnect.herokuapp.com`).then((res) => {
         if (res.status === 200) {
           setData(res.data.data);
         }

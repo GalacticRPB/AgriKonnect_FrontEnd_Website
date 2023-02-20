@@ -167,7 +167,7 @@ const EditProduct = ({productdata}) => {
             quantity: productInput.quantity || state.quantity,
         }
         console.log(data)
-        axios.put(`http://localhost:8000/api/products/${product_id}`, data).then(res=>{
+        axios.put(`http://agrikonnect.herokuapp.com/${product_id}`, data).then(res=>{
             if(res.data.status === 200)
             {
                 swal("Success",res.data.message,"success");

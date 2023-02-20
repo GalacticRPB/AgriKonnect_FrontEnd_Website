@@ -98,7 +98,7 @@ const EditCustomerAccount = () => {
 
         }
         
-        axios.put(`http://localhost:8000/api/updateCustomer/${customer_id}`, data).then(res=>{
+        axios.put(`http://agrikonnect.herokuapp.com/${customer_id}`, data).then(res=>{
             if(res.data.status === 200)
             {
                 swal("Success",res.data.message,"success");

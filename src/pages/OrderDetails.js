@@ -159,7 +159,7 @@ function OrderDetails(props)
 
     useEffect(() => {
         
-        axios.get(`http://localhost:8000/api/orderDetails/${order_id}`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com/${order_id}`).then((res) => {
           if (res.status === 200) {
             setOrders(res.data.orders);
             setItems(res.data.order_items[0]);
@@ -192,7 +192,7 @@ function OrderDetails(props)
 
         console.log(orderItem)
 
-        axios.post(`http://localhost:8000/api/approve-order`, approvedOrders).then(res=> {
+        axios.post(`http://agrikonnect.herokuapp.com`, approvedOrders).then(res=> {
             if(res.data.status === 200)
             {
                 swal("Order Approved!!", res.data.message, "Success")

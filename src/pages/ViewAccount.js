@@ -20,7 +20,7 @@ function ViewAccount()
     
     React.useEffect(() => {
         if(Object.keys(user).length === 0){
-            axios.get(`http://127.0.0.1:8000/api/user/${JSON.parse(localStorage.getItem('user-info')).id}`).then(res=>{
+            axios.get(`http://agrikonnect.herokuapp.com/${JSON.parse(localStorage.getItem('user-info')).id}`).then(res=>{
             if(res.status === 200)
             { 
                 const data = JSON.stringify(res.data[0])

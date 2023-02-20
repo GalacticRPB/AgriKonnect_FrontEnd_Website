@@ -100,7 +100,7 @@ function ToReviewPage(props)
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8000/api/to-review/${user_id}`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com/${user_id}`).then((res) => {
           if (res.status === 200) {
             setReview(res.data.delivered);
             setLoading(false);

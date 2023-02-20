@@ -167,7 +167,7 @@ function ProductDetails()
 
   useEffect(() => {
 
-      axios.get(`http://localhost:8000/api/viewfruit/${product_id}`).then((res) => {
+      axios.get(`http://agrikonnect.herokuapp.com/${product_id}`).then((res) => {
         if (res.status === 200) {
           
           setReview(res.data.reviews);
@@ -210,7 +210,7 @@ function ProductDetails()
         image: state.image,
       }
 
-     axios.post(`http://localhost:8000/api/addtoCart`, data).then(res=>{
+     axios.post(`http://agrikonnect.herokuapp.com`, data).then(res=>{
         if(res.data.status === 201)
         {
           swal("Success",res.data.message,"success");
@@ -284,7 +284,7 @@ function ProductDetails()
                           component='img'
                           height="352"
                           sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
-                          image={`http://localhost:8000/${image}`}
+                          image={`http://agrikonnect.herokuapp.com/${image}`}
                         />
                     </Box>   
                     </Item>

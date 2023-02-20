@@ -181,7 +181,7 @@ const AddProduct = () => {
         formData.append('quantity', productInput.quantity);
         formData.append('user_id', user.id);
 
-        axios.post(`http://localhost:8000/api/products`, formData).then(res => {
+        axios.post(`http://agrikonnect.herokuapp.com`, formData).then(res => {
 
             if(res.data.status === 200)
             {

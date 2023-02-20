@@ -153,7 +153,7 @@ function OngoingDetails(props)
 
     useEffect(() => {
         
-        axios.get(`http://localhost:8000/api/to-ship-details/${order_id}`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com/${order_id}`).then((res) => {
           if (res.status === 200) {
             setToShip(res.data.ongoing);
             setLoading(false);
@@ -183,7 +183,7 @@ function OngoingDetails(props)
             
         }
 
-        axios.post(`http://localhost:8000/api/out-for-delivery`, outfordelivery).then(res=> {
+        axios.post(`http://agrikonnect.herokuapp.com`, outfordelivery).then(res=> {
             if(res.data.status === 200)
             {
                 swal("Order is out for Delivery", res.data.message, "Success")

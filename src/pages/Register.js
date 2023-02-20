@@ -131,7 +131,7 @@ const Register = () => {
       formData.append('password', userInput.password);
       formData.append('verified', userInput.verified);
 
-      axios.post(`http://localhost:8000/api/register`,formData,
+      axios.post(`http://agrikonnect.herokuapp.com`,formData,
       {headers: { "Content-Type": "multipart/form-data" },})
       .then(res=>{
         

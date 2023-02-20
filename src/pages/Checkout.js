@@ -181,7 +181,7 @@ function Checkout() {
     console.log(orders)
 
 
-    axios.post(`http://localhost:8000/api/place-order`, orders).then((res) => {
+    axios.post(`http://agrikonnect.herokuapp.com`, orders).then((res) => {
       if (res.data.status === 200) {
         swal("Order Placed Successfully", res.data.message, "Success");
         setError([]);
@@ -206,7 +206,7 @@ function Checkout() {
             height="205"
             alt={item.image}
             sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
-            image={`http://localhost:8000/${item.image}`}
+            image={`http://agrikonnect.herokuapp.com/${item.image}`}
         />
       </Box>   
       

@@ -90,7 +90,7 @@ const EditPassword = () => {
             password: userInput.password || state.password,
         }
         console.log(data)
-        axios.put(`http://localhost:8000/api/updatePassword/${user_id}`, data).then(res=>{
+        axios.put(`http://agrikonnect.herokuapp.com/${user_id}`, data).then(res=>{
             if(res.data.status === 200)
             {
                 swal("Success",res.data.message,"success");

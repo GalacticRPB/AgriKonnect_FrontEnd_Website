@@ -18,7 +18,7 @@ function AdminTable() {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8000/api/users`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com`).then(res=>{
             if(res.status === 200)
             {
                 setUser(res.data.users)
@@ -26,7 +26,7 @@ function AdminTable() {
             }
         });
 
-        axios.get(`http://localhost:8000/api/users2`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com`).then(res=>{
             if(res.status === 200)
             {
                 setUser2(res.data.users2)
@@ -54,7 +54,7 @@ function AdminTable() {
                     <td>{item.lastname}</td>
                     <td>{item.username}</td>
                     <td>{item.orgName}</td>
-                    <td><img src={`http://localhost:8000/${item.image}`} width="80px" alt=""/></td>
+                    <td><img src={`http://agrikonnect.herokuapp.com/${item.image}`} width="80px" alt=""/></td>
                     <td>{item.mobilephone}</td>
                     <td>{item.verified}</td>
                     <td>
@@ -76,7 +76,7 @@ function AdminTable() {
                     <td>{item.lastname}</td>
                     <td>{item.username}</td>
                     <td>{item.orgName}</td>
-                    <td><img src={`http://localhost:8000/${item.image}`} width="80px" alt=""/></td>
+                    <td><img src={`http://agrikonnect.herokuapp.com/${item.image}`} width="80px" alt=""/></td>
                     <td>{item.mobilephone}</td>
                     <td>{item.verified}</td>
                     <td>

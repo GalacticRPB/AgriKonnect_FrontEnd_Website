@@ -111,7 +111,7 @@ const OTPScreen = () => {
             otp:otpInput.otp,
             email: email,
         }
-      axios.post(`http://localhost:8000/api/verifyEmail`, data).then(
+      axios.post(`http://agrikonnect.herokuapp.com`, data).then(
         res=> {
             if(res.status === 200)
             {

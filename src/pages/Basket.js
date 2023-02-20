@@ -129,7 +129,7 @@ function Basket() {
 
     if (!cart) {
       axios
-        .get(`http://127.0.0.1:8000/api/basket/${customer.id}`)
+        .get(`http://agrikonnect.herokuapp.com/${customer.id}`)
         .then((res) => {
           if (res.status === 200) {
             setCart(res.data.cart);
@@ -170,7 +170,7 @@ function Basket() {
   function updateCartQuantity(cart_id, scope) {
     axios
       .put(
-        `http://localhost:8000/api/basket-updatedquantity/${cart_id}/${scope}/${customer.id}`
+        `http://agrikonnect.herokuapp.com/${cart_id}/${scope}/${customer.id}`
       )
       .then((res) => {
         if (res.data.status === 200) {
@@ -214,7 +214,7 @@ function Basket() {
               <Box sx={{ display: "flex", width: "50%", margin: 2 }}>
                 <Box sx={{ display: "flex" }}>
                   <Checkbox onClick={() => addToSelected(item)} />
-                  <Image width="120px" alt={item.image} duration={0} src={`http://localhost:8000/${item.image}`}/>
+                  <Image width="120px" alt={item.image} duration={0} src={`http://agrikonnect.herokuapp.com/${item.image}`}/>
                 </Box>
                 <Box
                   sx={{

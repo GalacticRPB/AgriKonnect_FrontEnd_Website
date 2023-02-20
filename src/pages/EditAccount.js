@@ -97,7 +97,7 @@ const EditAccount = () => {
 
     useEffect(() => {
 
-        axios.get(`http://127.0.0.1:8000/api/userInfo/${id}`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com/${id}`).then(res=>{
             if(res.status === 200)
             {
                 //console.log(res.data)
@@ -114,7 +114,7 @@ const EditAccount = () => {
             username: userInput.username || state.username
         }
 
-        axios.put(`http://localhost:8000/api/update/${id}`, sellerUsername).then(res=>{
+        axios.put(`http://agrikonnect.herokuapp.com/${id}`, sellerUsername).then(res=>{
             if(res.data.status === 200)
             {
                 swal("Success", res.data.message, "success");

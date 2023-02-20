@@ -89,7 +89,7 @@ function ToPay(props)
             setCustomer(JSON.parse(localStorage.getItem('customer')))
         }
         
-        axios.get(`http://127.0.0.1:8000/api/show-to-pay/${customer.id}`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com/${customer.id}`).then(res=>{
             if(res.status === 200)
             {
                 setToPay(res.data.toPay)
@@ -113,7 +113,7 @@ function ToPay(props)
                 <Stack direction={{ xs: "column-reverse"}}  spacing={10}>
                   <Item key={idx}>
                       <ListItem alignItems="flex-start">
-                      <Image width="120px" alt={item.image} duration={0} src={`http://localhost:8000/${item.image}`}/>
+                      <Image width="120px" alt={item.image} duration={0} src={`http://agrikonnect.herokuapp.com${item.image}`}/>
                       <ListItemText primary={item.order_name} secondary={<Typography
                       sx={{ display: 'inline',
                       fontFamily: 'Poppins',

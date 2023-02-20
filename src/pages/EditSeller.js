@@ -16,7 +16,7 @@ function EditSeller()
     useEffect(() => {
         
         const user_id = state.id;
-        axios.get(`http://localhost:8000/api/edit-verification/${user_id}`).then( res => {
+        axios.get(`http://agrikonnect.herokuapp.com/${user_id}`).then( res => {
 
             if(res.data.status === 200)
             {
@@ -41,7 +41,7 @@ function EditSeller()
             verified: userInput.verified || state.verified,
         }
 
-        axios.put(`http://localhost:8000/api/update-verification/${user_id}`, data).then(res=>{
+        axios.put(`http://agrikonnect.herokuapp.com/${user_id}`, data).then(res=>{
             if(res.data.status === 200)
             {
                 swal("Success",res.data.message,"success");

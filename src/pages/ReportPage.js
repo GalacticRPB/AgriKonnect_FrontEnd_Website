@@ -105,7 +105,7 @@ function ReportTable(props) {
     useEffect(() => {
 
 
-        axios.get(`http://localhost:8000/api/sample/${id}`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com/${id}`).then(res=>{
             if(res.status === 200)
             {
                 setReport(res.data.price)
@@ -115,7 +115,7 @@ function ReportTable(props) {
             }
         });
 
-        axios.get(`http://localhost:8000/api/orderCount/${id}`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com/${id}`).then(res=>{
             if(res.status === 200)
             {
                 setCount(res.data.orderCount)

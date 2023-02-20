@@ -161,7 +161,7 @@ function DeliveryPage(props)
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8000/api/order-delivered/${user_id}`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com/${user_id}`).then((res) => {
           if (res.status === 200) {
             setDelivered(res.data.delivered);
             setLoading(false);

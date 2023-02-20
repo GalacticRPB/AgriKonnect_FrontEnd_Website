@@ -97,13 +97,13 @@ const Homepage = (props) =>
 
   useEffect(() => {
 
-    axios.get(`http://localhost:8000/api/date/${user_id}`).then((res) => {
+    axios.get(`http://agrikonnect.herokuapp.com/${user_id}`).then((res) => {
       if (res.status === 200) {
         setVisual(res.data.data);
       }
     });
 
-      axios.get(`http://localhost:8000/api/recent/${user_id}`).then((res) => {
+      axios.get(`http://agrikonnect.herokuapp.com/${user_id}`).then((res) => {
         if (res.status === 200) {
           setSold(res.data.sellerdelivered);
         }

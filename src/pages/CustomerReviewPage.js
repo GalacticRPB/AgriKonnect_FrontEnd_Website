@@ -113,7 +113,7 @@ function ReviewForm()
             review: reviewInput.review,
         }
 
-        axios.post(`http://localhost:8000/api/review`, reviews).then(res=> {
+        axios.post(`http://agrikonnect.herokuapp.com`, reviews).then(res=> {
             if(res.data.status === 200)
             {
                 swal("Review Submitted", res.data.message, "Success")

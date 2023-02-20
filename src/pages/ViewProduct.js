@@ -150,7 +150,7 @@ function ViewProduct(props) {
             setUser(JSON.parse(localStorage.getItem('user')))
         }
         
-        axios.get(`http://127.0.0.1:8000/api/products/${user.id}`).then(res=>{
+        axios.get(`http://agrikonnect.herokuapp.com/${user.id}`).then(res=>{
             if(res.status === 200)
             {
                 //console.log(res.data)
@@ -166,7 +166,7 @@ function ViewProduct(props) {
         const thisClicked = e.currentTarget;
         thisClicked.innerText = "Deleting";
 
-        axios.delete(`http://localhost:8000/api/products/${id}`).then(res=>{
+        axios.delete(`http://agrikonnect.herokuapp.com/${id}`).then(res=>{
             if(res.data.status === 200)
             {
                 swal("Deleted!",res.data.message,"success");
@@ -198,7 +198,7 @@ function ViewProduct(props) {
                           height='260'
                           width='260'
                           sx={{ padding: "1em 1em 0 1em", objectFit: "contain" }}
-                          image={`http://localhost:8000/${item.image}`}
+                          image={`http://agrikonnect.herokuapp.com/${item.image}`}
                         />
                         </ListItem>
                         <ListItem>

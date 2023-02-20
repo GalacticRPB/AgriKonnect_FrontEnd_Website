@@ -82,7 +82,7 @@ const LoginCustomer = () =>
     {
         e.preventDefault();
         let item={username,password};
-        let result = await fetch("http://localhost:8000/api/loginCustomer",{
+        let result = await fetch("http://agrikonnect.herokuapp.com",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

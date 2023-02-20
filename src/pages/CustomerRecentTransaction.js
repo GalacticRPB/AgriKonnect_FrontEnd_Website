@@ -85,7 +85,7 @@ function CustomerRecentPage(props)
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8000/api/customer-recent/${user_id}`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com/${user_id}`).then((res) => {
           if (res.status === 200) {
             setRecent(res.data.recent);
             setLoading(false);

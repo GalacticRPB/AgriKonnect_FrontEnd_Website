@@ -97,7 +97,7 @@ function SearchProduct() {
     
     async function search(key) {
         console.warn(key)
-        let result = await fetch("http://localhost:8000/api/search/"+key);
+        let result = await fetch("http://agrikonnect.herokuapp.com/"+key);
         console.log(result);
         result = await result.json();
 
@@ -108,7 +108,7 @@ function SearchProduct() {
                 <Stack direction={{ xs: "column-reverse"}}  spacing={10}>
                   <Item key={index}>
                     <ListItemButton onClick={()=> navigate ((`/vegetables/${item.name}`),{state:item})} alignItems="flex-start">
-                      <Image duration = {0} src={`http://localhost:8000/${item.image}`} height={100} width={100} />
+                      <Image duration = {0} src={`http://agrikonnect.herokuapp.com/${item.image}`} height={100} width={100} />
                       <ListItemText primary={item.name} secondary={<Typography
                       sx={{ display: 'inline',
                       fontFamily: 'Poppins',

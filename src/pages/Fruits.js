@@ -169,7 +169,7 @@ function FruitPages(props)
     localStorage.setItem('customer', JSON.stringify(customer))
     
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/fruit`).then((res) => {
+        axios.get(`http://agrikonnect.herokuapp.com`).then((res) => {
           if (res.status === 200) {
             setData(res.data.products);
             setLoading(false);
@@ -192,7 +192,7 @@ function FruitPages(props)
                     <Stack direction={{ xs: "column-reverse"}}  spacing={10}>
                       <Item key={idx}>
                         <ListItemButton onClick={() => navigate(`/fruits/${item.name}`,{state:item})} alignItems="flex-start">
-                          <Image duration={0} src= {`http://localhost:8000/${item.image}`} width="120px" alt={item.image}/>
+                          <Image duration={0} src= {`http://agrikonnect.herokuapp.com/${item.image}`} width="120px" alt={item.image}/>
                          
                           <ListItemText primary={item.name} secondary={<Typography
                           sx={{ display: 'inline',

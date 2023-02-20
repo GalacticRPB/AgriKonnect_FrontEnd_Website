@@ -115,7 +115,7 @@ const RegisterCustomer = () => {
     formData.append('mobilephone', userInput.mobilephone);
 
 
-    axios.post(`http://localhost:8000/api/registerCustomer`,formData,
+    axios.post(`http://agrikonnect.herokuapp.com`,formData,
       {headers: { "Content-Type": "multipart/form-data" },})
       .then(res=>{
         if(res.status === 200)
